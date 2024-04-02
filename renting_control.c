@@ -7,7 +7,7 @@ typedef struct {
 	char tuition[7];
 	char kilometres[9];
 	char removal[8];
-		char delivery[8];
+	char delivery[8];
 	char fault[99];
 	char otv[7];
 	char state[9];
@@ -31,6 +31,7 @@ void continu(void) {
 }
 
 void menu(void) {
+	system("clear"); 
 	int option;
 	do {
 	printf(" 1 Create file\n 2 Load data\n 3 List data\n 4 Query data\n 5 Modifi data\n 6 Finish\n");
