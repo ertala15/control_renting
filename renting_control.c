@@ -8,6 +8,7 @@ typedef struct {
 	char kilometres[9];
 	char removal[8];
 	char delivery[8];
+	char location[99];
 	char fault[99];
 	char otv[7];
 	char state[9];
@@ -90,6 +91,8 @@ void loadData(void) {
 	scanf("%s",&data.removal);
 	printf("Delivery: ");
 	scanf("%s",&data.delivery);
+	printf("Location: ");
+	scanf("%s",&data.location);
 	printf("Fault: ");
 	scanf("%s",&data.fault);
 	printf("Otv: ");
@@ -111,7 +114,7 @@ void listData(void) {
 	data_renting data;
 	fread(&data, sizeof(data_renting), 1, arch);
 	while (!feof(arch)) {
-		printf("%s\t%s\t%s\t\t%s\t%s\t%s\t\t%s\t%s\n",data.notification,data.tuition,data.kilometres,data.removal,data.delivery,data.fault,data.otv,data.state);
+		printf("%s\t%s\t%s\t\t%s\t%s\t%s\t%s\t%s\%s\n",data.notification,data.tuition,data.kilometres,data.removal,data.delivery,data.location,data.fault,data.otv,data.state);
 		fread(&data, sizeof(data_renting), 1, arch);
 	}
 	fclose(arch);
@@ -133,7 +136,7 @@ void dataQuery(void) {
 	fread(&data, sizeof(data_renting), 1, arch);
 	while (!feof(arch)) {
 		if (strcmp(data_query,data.tuition)==0||strcmp(data_query,data.otv)==0) {
-		printf("%s\t%s\t%s\t\t%s\t%s\t%s\t\t%s\t%s\n",data.notification,data.tuition,data.kilometres,data.removal,data.delivery,data.fault,data.otv,data.state);
+		printf("%s\t%s\t%s\t\t%s\t%s\t%s\t%s\t%s\t%s\n",data.notification,data.tuition,data.kilometres,data.removal,data.delivery,data.location,data.fault,data.otv,data.state);
 		exist=1;
 		}
 		fread(&data, sizeof(data_renting), 1, arch);
@@ -159,7 +162,7 @@ void modifyData() {
 	fread(&data, sizeof(data_renting), 1, arch);
 	while (!feof(arch)) {
 		if (strcmp(data.otv,mdata)==0) {
-			printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",data.notification,data.tuition,data.kilometres,data.removal,data.delivery,data.fault,data.otv,data.state);
+			printf("%s\t%s\t%s\t\t%s\t%s\t%s\t%s\t%s\t%s\n",data.notification,data.tuition,data.kilometres,data.removal,data.delivery,data.location,data.fault,data.otv,data.state);
 			exist=1;
 			break;
 	}
